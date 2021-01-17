@@ -1,8 +1,5 @@
 package com.pn.blackjack.model;
 
-import com.pn.blackjack.model.Card;
-import org.springframework.stereotype.Component;
-
 import java.util.Random;
 
 public class Deck {

@@ -9,14 +9,12 @@ public class Hand {
 
     List<Card> handCards;
     int total;
-    int otherTotal;
     boolean aceFlag = false;
     StringBuffer sb = new StringBuffer("hand is: ");
 
     public Hand() {
         this.handCards = new ArrayList<>();
         this.total = 0;
-        this.otherTotal = 0;
     }
 
     public void addCard(Card card){
@@ -30,14 +28,13 @@ public class Hand {
         total += card.getValue();
         if(card.isAceFlag()){
             aceFlag = true;
-            otherTotal += total+10;
         }
 
     }
 
     public String printHand(){
         if(aceFlag){
-            return sb + " " + "total: "+ total + " or " + otherTotal;
+            return sb + " " + "total: "+ total + " or " + getOtherTotal();
         }
         return sb + " " + total;
     }
@@ -49,7 +46,10 @@ public class Hand {
     }
 
     public int getOtherTotal(){
-        return otherTotal;
+        if(aceFlag){
+            return (total + 10);
+        }else
+            return total;
     }
 
     public boolean isAceFlag() {
